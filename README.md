@@ -8,9 +8,9 @@ TO SEE THE ORIGINAL "ALERT" BEHAVIOR (NO SOUND)
 -COPY Config.xml and eb_alert_sounds.html to  /sdcard/Android/data/com.symbol.enterprisebrowser  
 -RUN EB  
   
-TO HEAR A BEEP FOR EVERY ALERT
--RENAME Config_ALERT_WITH_BEEP.xml AS Config.xml
--COPY Config.xml and all the remaining files to  /sdcard/Android/data/com.symbol.enterprisebrowser
--RUN EB
-
+TO HEAR A BEEP FOR EVERY ALERT  
+-RENAME Config_ALERT_WITH_BEEP.xml AS Config.xml  
+-COPY Config.xml and all the remaining files to  /sdcard/Android/data/com.symbol.enterprisebrowser  
+-RUN EB  
+  
 EXPLANATION: USING THE EB DOM INJECTION, THE ORIGINAL JAVASCRIPT FUNCTION window.Alert IS OVERRIDDEN AND A BEEP HAS BEEN ADDED
