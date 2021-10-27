@@ -1,0 +1,109 @@
+
+<html class="cxnt48">
+
+    <head>
+
+        <title>EB ALERT SOUNDS v3.2.5.0</title>
+
+
+
+
+        <script type="text/javascript" language="Javascript">
+           var itsmobile_eos = "/sap(cz1TSUQlM2FBTk9OJTNhczRoc3J2ci11YWVfR0VQXzAyJTNhSTdZQWNXUXJ2Z0lzeFZWZERTeUppMERzRTNnZDNSRlgxU0lyY3pEWS1BVFQ=)/bc/gui/sap/its/znesto/~flNUQVRFPTEwNjM0ODc1MDIuMDEyLjA0LjA0?~okcode=%2fnex";
+		   var ws;
+		   var devinfo;
+		   var resws;
+		   var devip;
+		   
+		   function  getIP(){
+		    var xmlHttp = new XMLHttpRequest();
+			xmlHttp.open( "GET", 'https://api.ipify.org/', false );
+			xmlHttp.send( null );
+			return xmlHttp.responseText;
+		   }
+		  
+		   (function() {
+		   
+
+				var checkReady = function(callback) {
+					if (window.EB) {
+						callback(EB);
+					}
+					else {
+						
+						window.setTimeout(function() { checkReady(callback); }, 100); 
+					}
+					devip = getIP();
+				};
+				
+				
+
+				checkReady(function(EB) {
+					console.log("DEV.SERIAL (EB.System.deviceSerialNumber):"+EB.System.deviceSerialNumber);
+					console.log("UUID (EB.System.uuid):"+EB.System.uuid);
+					console.log("phId (EB.System.phoneId):"+EB.System.phoneId);
+					console.log("OS:"+EB.System.osVersion);
+					console.log("OEM:"+EB.System.oemInfo);
+					console.log("locale:"+EB.System.locale);
+					console.log("country:"+EB.System.country);
+					console.log("webview:"+EB.System.webviewFramework);
+					devinfo = "DEV.SERIAL (EB.System.deviceSerialNumber):"+EB.System.deviceSerialNumber+" <br>IP:"+devip+" <br>OEM:"+EB.System.oemInfo+" OS:"+EB.System.osVersion+" <br>UUID (EB.System.uuid):"+EB.System.uuid+" <br>phId (EB.System.phoneId):"+EB.System.phoneId+" loc/cc:"+EB.System.locale+"-"+EB.System.country+" webview:"+EB.System.webviewFramework ;
+					dump(devinfo);
+					document.getElementById('log').innerHTML = devinfo;
+					
+					
+				});
+				
+				
+					
+			})();
+			
+		   
+
+
+
+		function dump(info){
+			alert('LOGGING DATA');
+
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", 'https://cxnt48.com/dump', true);
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhr.onreadystatechange = function() { // Call a function when the state changes.
+				if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+					// Request finished. Do processing here.
+				}
+			}
+			xhr.send("who="+info+"&what=com.ndzl.reb&any=..." );
+
+			alert('DATA LOGGED!');
+
+			//EB.Notification.showPopup({'title':'CXNT48',  'message':'DATA LOGGED!',  'buttons':['ok'] });
+
+		} 
+		  
+		function fooCallBack(cb)
+		{
+			//doing nothing
+		}
+		  
+		   
+        </script>
+		
+
+<div id="log">LOG INFO</div>
+
+    </head>
+    <body>
+
+
+        <input type="text"   id="reb_in_one" name="" value="09876543210"  /> 
+		<br>
+        <input type="text" class="MobileEdit"  id="reb_in_two" name="" value="09876543210"  /> 
+		<br>
+		
+		<input type="button" class="MobileButton" id="reb_bt_one" name="exit[1]" value="Action 1" onclick=""  />
+		
+		
+
+    </body>
+</html>
